@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_operation_ostd/ui/screens/update_product_screen.dart';
-
 import '../../models/product.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key, required this.product});
-
   final Product product;
+  VoidCallback? deleteButton;
+  ProductItem({super.key, required this.product, this.deleteButton}); //delete method call.
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +26,17 @@ class ProductItem extends StatelessWidget {
       ),
       trailing: Wrap(
         children: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.delete)),
+          IconButton(
+            onPressed: deleteButton,
+            icon: const Icon(Icons.delete),
+          ),
           IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, UpdateProductScreen.name,
-                    arguments: product,);
+                Navigator.pushNamed(
+                  context,
+                  UpdateProductScreen.name,
+                  arguments: product,
+                );
               },
               icon: const Icon(Icons.edit))
         ],

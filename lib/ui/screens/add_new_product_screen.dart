@@ -102,7 +102,6 @@ class _AddNewProductScreen extends State<AddNewProductScreen> {
               return null;
             },
           ),
-
           TextFormField(
             controller: _productCodeTEController,
             autovalidateMode: AutovalidateMode.onUserInteraction,
